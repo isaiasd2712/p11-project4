@@ -26,6 +26,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        margin: 20px 40px;
         gap: 20px;
         color: white;
     }
@@ -42,7 +43,7 @@
         transition: text-shadow 0.4s ease;
     }
     a:hover{
-        color: aqua;
+        color: #00ff7b;
         transition: color 0.4s;
         text-shadow: 0 0 30px rgba(255, 255, 255);
          
