@@ -1,21 +1,26 @@
 <script>
-    const url = 
-        'https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1'
+    import { onMount } from "svelte"
+    export let url; 
+        
     const options = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjgxOGQ3OTBlNGM5Yjk3OTE3ZTYwYzNmZTEyNDg1YyIsInN1YiI6IjY1MmU1YzFhY2FlZjJkMDExY2M2YjhjMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sAD1CNXRs8zjfVeGuw2hlE0sVU164QtqTo_VsoGA4lU'
+        Authorization: 
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjgxOGQ3OTBlNGM5Yjk3OTE3ZTYwYzNmZTEyNDg1YyIsInN1YiI6IjY1MmU1YzFhY2FlZjJkMDExY2M2YjhjMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sAD1CNXRs8zjfVeGuw2hlE0sVU164QtqTo_VsoGA4lU'
   }
 };
-
+    
     let movies= [];
 
-    fetch(url , options)
-        .then(response => response.json())
-        .then(data => movies = data.results)
-        .catch(err => console.error(err));
+    onMount(() => 
+        fetch(url , options)
+            .then((response) => response.json())
+            .then((data) => (movies = data.results))
+            .catch((err) => console.error(err))
+    );
 </script>
+
 <div>
 {#each movies as movie }
     <img alt= "Cover" src= {`https://image.tmdb.org/t/p/original/${movie.poster_path}`}>
@@ -27,12 +32,14 @@
     div{
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        gap: 20px;
+       
     }
     img{
-        height: 151px;
-        width: 275px;
+        height: 250px;
+        width: 175px;
         object-fit: cover;
+        border-radius: 5px;
+        cursor: pointer;
     }
 </style>
