@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from "svelte"
+    import { onMount } from "svelte";
     export let url; 
         
     const options = {
@@ -20,19 +20,32 @@
             .catch((err) => console.error(err))
     );
 </script>
-
+<p>Most Popular</p>
 <div>
+ 
 {#each movies as movie }
     <img alt= "Cover" src= {`https://image.tmdb.org/t/p/original/${movie.poster_path}`}>
+   
 {/each}
 </div>
 
 
 <style>
+   
+    p{
+        color: white;
+        font-weight: bold;
+        font-size: larger;
+        font-family: Graphik,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        padding-top: 20px;
+    }
     div{
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 20px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding-top: 20px;
        
     }
     img{

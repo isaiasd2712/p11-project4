@@ -20,7 +20,7 @@
             .catch((err) => console.error(err))
     );
 </script>
-<p> New Arrival </p>
+<p> Top Rated </p>
 <div>
     
 {#each movies as movie }
@@ -57,5 +57,3 @@
         cursor: pointer;
     }
 </style>
-    
-
