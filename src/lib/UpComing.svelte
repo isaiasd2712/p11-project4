@@ -19,9 +19,30 @@
             .then((data) => (movies = data.results))
             .catch((err) => console.error(err))
     );
+    let containerslider;
+    let scrollValue = 0;
+
+    const right = () => {
+        if (containerslider) {
+      scrollValue += 100;
+      containerslider.scroll({ left: scrollValue, behavior: "smooth" });
+    }
+    };
+    const left = () => {
+        if (containerslider) {
+      scrollValue -= 100;
+      containerslider.scroll({ left: scrollValue, behavior: "smooth" });
+    }
+    };
 </script>
+
+<button on:click={left} class="left"></button>
+<button on:click={right} class="right"></button>
+<section>
 <p> Up Coming </p>
-<div>
+
+
+<div bind:this={containerslider}>
     
 {#each movies as movie }
 
@@ -30,8 +51,13 @@
 {/each}
 </div>
 
+</section>
 
 <style>
+    section{
+        margin-left: 40px;
+    }
+
     p{
         color:white;
         font-weight: bold;
@@ -40,6 +66,7 @@
         padding-top: 20px;
     }
     div{
+        width: 95%;
         display: flex;
         justify-content: start;
         flex-wrap: nowrap;
@@ -47,6 +74,7 @@
         overflow-x: scroll;
         overflow-y: hidden;
         padding-top: 20px;
+        
        
     }
     img{
@@ -55,5 +83,29 @@
         object-fit: cover;
         border-radius: 5px;
         cursor: pointer;
+        margin-top: 20px ;
+    }
+    button{
+        display: flex;
+        position: absolute;
+
+    }
+    .left{
+        height: 24px;
+        width: 24px;
+        background: url(./src/assets/Btn-option.png);
+        left: 0;
+        transform: rotate(90deg);
+        border: 0;
+        background-repeat: no-repeat;
+    }
+    .right{
+        height: 20px;
+        width: 24px;
+        background: url(./src/assets/Btn-option.png);
+        right: 0;
+        transform: rotate(-90deg);
+        border: 0;
+        background-repeat: no-repeat;
     }
 </style>

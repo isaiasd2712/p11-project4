@@ -23,6 +23,7 @@
 <style>
     
     header {
+        width: 95%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
